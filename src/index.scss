@@ -1,5 +1,29 @@
+//Global Style
+//g-v-변수명 = global-variable-변수명
+//g-m-mixin명 = global-mixin-mixin명
+//g-f-함수명 = global-function-함수명
+
+$g-v-max-width: 1168px;
+
+@mixin g-m-align-by-flex($x: center, $y: center) {
+  display: flex;
+  justify-content: $x;
+  align-items: $y;
+  @content;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+button {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
 }
