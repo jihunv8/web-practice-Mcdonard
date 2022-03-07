@@ -1,0 +1,80 @@
+@import '../../../index.scss';
+
+.Footer {
+  background-color: #292929;
+
+  .footer-container {
+    width: $g-v-max-width;
+    margin: 0 auto;
+    padding: 45px 0 55px;
+    display: flex;
+    position: relative;
+    // @include g-m-align-by-flex(space-between);
+  }
+
+  .footer-nav {
+    margin-right: 70px;
+
+    > a {
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: block;
+
+      &:first-child {
+        color: #ffff00;
+      }
+
+      &:not(:first-child) {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .footer-contact {
+    > span {
+      display: block;
+      color: #808080;
+      font-size: 0.875rem;
+      font-weight: 400;
+
+      &:not(:first-child) {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .sns-nav {
+    display: flex;
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+
+    > a {
+      $size: 40px;
+      display: block;
+      width: $size;
+      height: $size;
+
+      &.sns-facebook {
+        background: url('../../../images/footer/ico_sns.png') 0 (0 - $size * 0);
+      }
+
+      &.sns-instagram {
+        background: url('../../../images/footer/ico_sns.png') 0 (0 - $size * 1);
+      }
+
+      &.sns-youtube {
+        background: url('../../../images/footer/ico_sns.png') 0 (0 - $size * 2);
+      }
+
+      &.sns-kakaostory {
+        background: url('../../../images/footer/ico_sns.png') 0 (0 - $size * 3);
+      }
+
+      &:not(:first-child) {
+        margin-left: 20px;
+      }
+    }
+  }
+}

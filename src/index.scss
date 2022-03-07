@@ -1,4 +1,8 @@
 //Global Style
+
+//글꼴 noto sans, noto sans kr
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 //g-v-변수명 = global-variable-변수명
 //g-m-mixin명 = global-mixin-mixin명
 //g-f-함수명 = global-function-함수명
@@ -16,6 +20,7 @@ $g-v-max-width: 1168px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
 }
 
 a {
