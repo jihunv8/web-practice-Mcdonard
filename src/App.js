@@ -9,7 +9,6 @@ const App = () => {
     <div className="App">
       <Header />
       <Home />
-      <section className="temp">임시 본문</section>
       <Footer />
     </div>
   );

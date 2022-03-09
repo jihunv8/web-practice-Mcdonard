@@ -9,7 +9,6 @@ export const useScrollY = () => {
   useEffect(() => {
     const onScroll = () => {
       setScrollY(window.scrollY);
-      console.log(window.scrollY);
     };
     window.addEventListener('scroll', onScroll);
 

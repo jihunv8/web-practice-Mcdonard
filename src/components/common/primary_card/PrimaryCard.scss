@@ -1,0 +1,22 @@
+.PrimaryCard {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 366px;
+  height: 438px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 3px 4px 0;
+  cursor: pointer;
+  > a {
+    > .card-image {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      height: 300px;
+    }
+
+    > .card-title {
+      padding: 24px 30px;
+      font-size: 1.125rem;
+      font-weight: 500;
+      white-space: pre-wrap;
+    }
+  }
+}

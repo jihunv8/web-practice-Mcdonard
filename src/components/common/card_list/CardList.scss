@@ -1,0 +1,22 @@
+@import '../../../index.scss';
+
+.CardList {
+  > .list {
+    display: grid;
+    grid-template-columns: repeat(3, fit-content(100%));
+    justify-content: space-between;
+    row-gap: 30px;
+  }
+
+  > .more-btn-container {
+    @include g-m-align-by-flex;
+    margin-top: 80px;
+    > .more-btn {
+      width: 90px;
+      height: 90px;
+      border: none;
+      text-indent: -9999px;
+      background-image: url('../../../images/home/btn_more.png');
+    }
+  }
+}
