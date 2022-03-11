@@ -21,7 +21,7 @@ const McLiveList = () => {
   };
 
   const cardCreator = (card) => (
-    <PrimaryCard image={card.img} title={card.title} />
+    <PrimaryCard image={card.img} subTitle={card.subTitle} />
   );
 
   return (

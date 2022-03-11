@@ -29,85 +29,6 @@
     }
   }
 
-  > .contents-list {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-    height: 540px;
-    position: relative;
-
-    > li.swiper-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      $duration: 0.3s;
-      &.from-next {
-        @keyframes slide-next {
-          from {
-            transform: translateX(1920px);
-          }
-
-          to {
-            transform: translateX(0);
-          }
-        }
-        animation-name: slide-next;
-        animation-duration: $duration;
-      }
-
-      &.from-prev {
-        @keyframes slide-prev {
-          from {
-            transform: translateX(-1920px);
-          }
-
-          to {
-            transform: translateX(0);
-          }
-        }
-        animation-name: slide-prev;
-        animation-duration: $duration;
-      }
-
-      &.to-next {
-        @keyframes slide-to-next {
-          from {
-            transform: translateX(0);
-            visibility: visible;
-          }
-
-          to {
-            transform: translateX(1920px);
-          }
-        }
-        animation-name: slide-to-next;
-        animation-duration: $duration;
-        visibility: hidden;
-      }
-
-      &.to-prev {
-        @keyframes slide-to-prev {
-          from {
-            transform: translateX(0);
-            visibility: visible;
-          }
-
-          to {
-            transform: translateX(-1920px);
-          }
-        }
-        animation-name: slide-to-prev;
-        animation-duration: $duration;
-        visibility: hidden;
-      }
-
-      &.hidden {
-        visibility: hidden;
-      }
-    }
-  }
-
   > .auto-slide-controller {
     @include g-m-align-by-flex;
     position: absolute;
@@ -144,8 +65,9 @@
         border-radius: 6px;
         background-color: #ffbc0d;
         transform: translateX(-100%);
+        animation-duration: 4s;
 
-        //---------------------------------------------------------수정해야함....--------------------------------------------------------------
+        //--------------------------------------------------------- 수정해야함 --------------------------------------------------------------
         //자동 슬라이드 프로그래스바 재생문제 아직 미해결.
         //아래 코드로 원하는대로 작동은 하지만 정석적인 방법이 아닌것 같음..
         &.active0 {
@@ -159,7 +81,6 @@
             }
           }
           animation-name: progress-active;
-          //animation-duration 속성은 javascript에서 설정
         }
 
         &.active1 {
@@ -173,7 +94,6 @@
             }
           }
           animation-name: progress-active1;
-          //animation-duration 속성은 javascript에서 설정
         }
       }
     }

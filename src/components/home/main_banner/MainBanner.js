@@ -1,24 +1,24 @@
 import './MainBanner.scss';
-import { data } from './bannerData';
 import { useEffect, useState } from 'react';
+import MainBannerList from '../main_banner_list/MainBannerList';
+
+import { data as bannerContentsList } from './temp_data/bannerData';
 
 const MainBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState('');
   const [isAutoSlideOn, setIsAutoSlideOn] = useState(true);
-  const nextIndex = (currentIndex + 1) % data.length;
-  const prevIndex = (currentIndex - 1 + data.length) % data.length;
-
-  const autoSlideTime =
-    data[currentIndex].type === 'image' ? 3 : data[currentIndex].time;
 
   const slideNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % data.length);
+    setCurrentIndex((prev) => (prev + 1) % bannerContentsList.length);
     setSlideDirection('from-next');
   };
 
   const slidePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + data.length) % data.length);
+    setCurrentIndex(
+      (prev) =>
+        (prev - 1 + bannerContentsList.length) % bannerContentsList.length
+    );
     setSlideDirection('from-prev');
   };
 
@@ -28,8 +28,9 @@ const MainBanner = () => {
 
   useEffect(() => {
     let timeout = null;
+    //timeout의 지연시간은 스타일의 animation-duration속성과 일치해야함.
     if (isAutoSlideOn) {
-      timeout = setTimeout(() => slideNext(), autoSlideTime * 1000);
+      timeout = setTimeout(() => slideNext(), 4000);
     }
 
     return () => {
@@ -42,25 +43,11 @@ const MainBanner = () => {
       <button className="slide-btn prev" onClick={slidePrev}>
         이전
       </button>
-      <ul className="contents-list">
-        {data.map((banner, i) => {
-          let className = 'swiper-content';
-          if (i === currentIndex) {
-            className += ` current ${slideDirection}`;
-          } else if (slideDirection === 'from-next' && i === prevIndex) {
-            className += ' to-prev';
-          } else if (slideDirection === 'from-prev' && i === nextIndex) {
-            className += ' to-next';
-          } else {
-            className += ' hidden';
-          }
-          return (
-            <li key={i} className={className}>
-              <img src={banner.content} />
-            </li>
-          );
-        })}
-      </ul>
+      <MainBannerList
+        contentsList={bannerContentsList}
+        currentIndex={currentIndex}
+        slideDirection={slideDirection}
+      />
       <button className="slide-btn next" onClick={slideNext}>
         다음
       </button>
@@ -75,7 +62,6 @@ const MainBanner = () => {
             className={`bar ${
               isAutoSlideOn ? `active${currentIndex % 2}` : ''
             }`}
-            style={{ animationDuration: `${autoSlideTime}s` }}
           ></span>
         </div>
       </div>
