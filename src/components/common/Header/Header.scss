@@ -1,12 +1,31 @@
 @import '../../../index.scss';
 
 .Header {
+  $header-hight: 140px;
   z-index: 9999;
   background-color: #fff;
+  position: relative;
+
+  &.submenu-visible {
+    border-bottom: solid 1px #f5bd43;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #e2e2e2;
+      position: absolute;
+      top: $header-hight;
+    }
+  }
+
   .header-container {
     width: $g-v-max-width;
     margin: 0 auto;
-    @include g-m-align-by-flex(space-between);
+    display: grid;
+    align-items: center;
+    grid-template: $header-hight auto / 106px 1fr auto;
   }
 
   .header-logo {
@@ -17,15 +36,56 @@
   }
 
   .mainpage-nav {
+    margin-left: 85px;
+    grid-row-start: span 2;
     display: flex;
-    > a {
-      @include g-m-align-by-flex;
-      height: 140px;
-      font-size: 1.25rem;
-      font-weight: 600;
-
-      &:not(:last-child) {
+    > div {
+      > a {
+        @include g-m-align-by-flex;
+        height: $header-hight;
+        font-size: 1.25rem;
+        font-weight: 600;
         margin-right: 85px;
+        position: relative;
+
+        &:not(:last-child) {
+          margin-right: 85px;
+        }
+      }
+
+      &:hover > a::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #f5bd43;
+        position: absolute;
+        bottom: -3px;
+      }
+
+      > .submenu {
+        padding: 35px 0 45px;
+        display: flex;
+        flex-direction: column;
+
+        > a {
+          color: rgb(128, 128, 128);
+          font-weight: 500;
+          line-height: 1.9;
+
+          &:not(:first-child) {
+            margin-top: 15px;
+          }
+
+          &:hover {
+            color: #000;
+            text-decoration: underline;
+          }
+        }
+
+        &.hidden {
+          display: none;
+        }
       }
     }
   }
@@ -63,20 +123,31 @@
   }
 
   &.scrolled {
+    $scrolled-header-hight: 80px;
     border-bottom: solid 1px #ffbc0d;
     position: sticky;
     top: 0;
-    animation-name: a;
+    animation-name: move-down;
     animation-duration: 0.2s;
 
-    @keyframes a {
+    &.submenu-visible {
+      &::after {
+        top: $scrolled-header-hight;
+      }
+    }
+
+    @keyframes move-down {
       from {
-        transform: translateY(-80px);
+        transform: translateY(-$scrolled-header-hight);
       }
 
       to {
         transform: translateY(0);
       }
+    }
+
+    .header-container {
+      grid-template-rows: $scrolled-header-hight auto;
     }
 
     .header-logo {
@@ -86,8 +157,10 @@
     }
 
     .mainpage-nav {
-      > a {
-        height: 80px;
+      > div {
+        > a {
+          height: $scrolled-header-hight;
+        }
       }
     }
   }

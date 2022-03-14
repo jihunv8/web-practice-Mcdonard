@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollY } from '../../../hooks/scroll';
 
+import headerMenu from './headerMenu';
 import mainLogo from '../../../images/main-logo/logo.png';
 import serchIcon from '../../../images/header/ico_search.png';
 
 const Header = () => {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const [isSubmenuHidden, setIsSubmenuHidden] = useState(true);
   const scrollY = useScrollY();
 
   useEffect(() => {
@@ -19,8 +21,25 @@ const Header = () => {
     }
   }, [scrollY]);
 
+  const hideSubmenu = () => {
+    if (isSubmenuHidden === false) {
+      setIsSubmenuHidden(true);
+    }
+  };
+
+  const showSubmenu = () => {
+    if (isSubmenuHidden === true) {
+      setIsSubmenuHidden(false);
+    }
+  };
+
   return (
-    <header className={`Header ${isScrolledDown ? 'scrolled' : ''}`}>
+    <header
+      className={`Header ${isScrolledDown ? 'scrolled' : ''} ${
+        isSubmenuHidden ? '' : 'submenu-visible'
+      }`}
+      onMouseLeave={hideSubmenu}
+    >
       <div className="header-container">
         <h1 className="header-logo">
           <Link to="/" title="홈으로 이동">
@@ -28,10 +47,24 @@ const Header = () => {
           </Link>
         </h1>
         <nav className="mainpage-nav">
-          <Link to="/menu/bugger">Menu</Link>
-          <Link to="/unimplemented">Store</Link>
-          <Link to="/unimplemented">What's New</Link>
-          <Link to="/unimplemented">Story</Link>
+          {headerMenu.map((menu, i) => (
+            <div key={i}>
+              <Link
+                to={menu.href}
+                onMouseOver={showSubmenu}
+                onClick={hideSubmenu}
+              >
+                {menu.menuName}
+              </Link>
+              <nav className={`submenu ${isSubmenuHidden ? 'hidden' : ''}`}>
+                {menu.submenu.map((sub) => (
+                  <Link to={sub.href} onClick={hideSubmenu}>
+                    {sub.menuName}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          ))}
         </nav>
         <nav className="header-etc-nav">
           <a href="">임차문의</a>
