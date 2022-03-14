@@ -1,0 +1,8 @@
+@import '../index.scss';
+
+.Unimplemented {
+  width: 100%;
+  height: 80vh;
+  font-size: 2rem;
+  @include g-m-align-by-flex;
+}

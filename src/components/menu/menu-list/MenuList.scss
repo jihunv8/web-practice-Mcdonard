@@ -1,0 +1,23 @@
+@import '../../../index.scss';
+
+.MenuList {
+  width: $g-v-max-width;
+  margin: 0 auto;
+  padding: 40px 0;
+
+  > .num-of-products {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: #f5bd43;
+      border-radius: 100%;
+      margin-right: 8px;
+      margin-bottom: 3px;
+    }
+  }
+}

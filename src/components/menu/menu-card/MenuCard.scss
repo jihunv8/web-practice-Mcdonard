@@ -1,0 +1,26 @@
+.MenuCard {
+  > a {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    display: block;
+    width: 366px;
+    height: 352px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > .menu-name-kr {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-top: 16px;
+    }
+
+    > .menu-name-en {
+      color: rgb(128, 128, 128);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      margin-top: 12px;
+    }
+  }
+}

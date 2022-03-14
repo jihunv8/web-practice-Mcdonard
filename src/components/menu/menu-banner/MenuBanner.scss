@@ -1,0 +1,47 @@
+@import '../../../index.scss';
+
+.MenuBanner {
+  min-width: $g-v-max-width;
+  max-width: 1920px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 220px;
+  padding: 10px 0;
+
+  > .menu-banner-container {
+    width: $g-v-max-width;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    > h2 {
+      font-size: 3.75rem;
+      font-weight: 500;
+    }
+
+    > p {
+      margin-top: 10px;
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 2.125rem;
+      white-space: pre-wrap;
+    }
+
+    > nav {
+      margin: 10px 0 5px;
+      > a {
+        &:not(:first-child)::before {
+          content: '';
+          display: inline-block;
+          background-color: #f5bd43;
+          border-radius: 100%;
+          width: 6px;
+          height: 6px;
+          margin: 0 13px 3px;
+        }
+      }
+    }
+  }
+}
